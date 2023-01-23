@@ -24,7 +24,7 @@ public class CardTrick {
             card.setSuit(Card.SUITS[rand.nextInt(3)]);
         }
 
-        System.out.println("What is the value of your card?");
+        System.out.println("What is the value of your card? Aces are 1, Jacks are 11, Queens are 12, and Kings are 13.");
         int valueInput = input.nextInt();
         userCard.setValue(valueInput);
         
@@ -32,6 +32,19 @@ public class CardTrick {
         String suitInput = input.next();
         userCard.setSuit(suitInput);
         // and search the hand here. 
+        boolean match = false;
+        int handValue;
+        String handSuit;
+        for (int count = 0; count < hand.length; count++){
+            handValue = hand[count].getValue();
+            handSuit = hand[count].getSuit();
+            if (valueInput == handValue && suitInput.equals(handSuit)){
+                match = true;
+            }
+        }
+        if (match){
+            printInfo();
+        }
         // Hint: You can ask for values 1 to 10, and then
         //       11 for jack, 12 for queen, etc. (remember arrays are 0-based though)
         //       1 for Hearts, 2 for Diamonds, etc. (remember arrays are 0-based though)
